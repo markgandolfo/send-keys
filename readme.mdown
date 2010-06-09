@@ -1,0 +1,61 @@
+## Send Keys ##
+
+Send keys is a capybara extension that lets you send keystrokes to an element in the browser. It uses webdriver so must be used using the `@javascript` tag in your features.
+
+### Installation ###
+
+Check out the repo `git clone git@github.commarkgandolfo/send-keys.git` and put the step_definitions/send_keys_steps.rb into your step_definitions directory and copy support/send_keys.rb to your support directory. 
+
+### Why would you need this ###
+
+Some javascript events only respond to key presses, and at the moment capybara doesn't support the functionality required to pull this off. For example, we wanted to test a text-completion form, where a user was able to start typing a word, and our application would show a list of possible options. With the generic fill_in method this didn't work. This is just one of the many use cases. 
+
+### How to use it ###
+
+First make sure you use the @javascript tag, to force capybara to use the webdriver driver. 
+
+Then in your features you can send characters or modifier keys to an element, or an array of modifier keys and keys.
+You'll need to use the css selectors to select an element. 
+
+For Example
+
+    # Send the 'a' character to the input who's id is search (#search)
+    And I send a to "input#search"
+    
+    # Send the 'a', 'b' and 'c' characters to the input who's id is search (#search)
+    And I send abc to "input#search"
+    
+    # You can put them in quotes if you feel more comfortable
+    And I send 'abc' to "input#search"
+    
+    # You can also send modifier/special key strokes to an element
+    And I send arrow_left to "input#search"
+    
+    # You can even send a combination of modifier and characters
+    # This will result in a the charcater 'A' being sent to the input
+    And I send [shift, a] to "input#search"
+    
+    # Or maybe you just want to press enter
+    And I send enter to "input#search"
+
+    # How cool would it be to test the counter in a text area (say for a twitter app)
+    And I send hello to "#message"
+    And I should see "135" in "characters_left"
+    And I send backspace to "#message"
+    And I should see "135" in "characters_left"
+    
+    # We used it to test completion suggestions
+    # The first suggested name was highlighted and responded to an enter keypress
+    And I send "bo" to "input#username"
+    And I should see "bob" within "username_suggestions"
+    And I send enter to "input#username"
+
+#### List of modifiers/special keys ####
+
+There are a list of modifier and special keys which can be sent to an element
+    
+`null, cancel, help, backspace, tab, clearreturn, enter, shift, left_shift, control, left_control alt, left_alt, pause, escape, spacepage_up, page_down, end, home, left, arrow_left, uparrow_up, right, arrow_rightdown, arrow_down, insert, delete, semicolon, equals, numpad0, numpad1, numpad2, numpad3, numpad4, numpad5, numpad6, numpad7, numpad8, numpad9, multiplyadd, separator, subtract, decimal, divide, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12`
+
+##### Please note #####
+
+Different OS' have different ways of simulating modifier keys, as a result not all will work on MacOSX, for example tab will not work. When I have some time I'll patch webdriver to support these keys.
