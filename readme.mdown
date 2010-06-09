@@ -32,7 +32,7 @@ For Example
     And I send arrow_left to "input#search"
     
     # You can even send a combination of modifier and characters
-    # This will result in a the charcater 'A' being sent to the input
+    # This will result in a the character 'A' being sent to the input
     And I send [shift, a] to "input#search"
     
     # Or maybe you just want to press enter
