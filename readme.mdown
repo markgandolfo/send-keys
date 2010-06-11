@@ -42,7 +42,7 @@ For Example
     And I send hello to "#message"
     And I should see "135" in "characters_left"
     And I send backspace to "#message"
-    And I should see "135" in "characters_left"
+    And I should see "136" in "characters_left"
     
     # We used it to test completion suggestions
     # The first suggested name was highlighted and responded to an enter keypress
