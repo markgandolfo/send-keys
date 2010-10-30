@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Gandolfo"]
-  s.date = %q{2010-10-28}
+  s.date = %q{2010-10-30}
   s.description = %q{Provides cucumber steps and methods to send key presses to DOM Elements with your Capybara tests.}
   s.email = %q{mark@aussiev8.com.au}
   s.extra_rdoc_files = [
@@ -35,9 +35,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<capybara>, [">= 0"])
     else
+      s.add_dependency(%q<capybara>, [">= 0"])
     end
   else
+    s.add_dependency(%q<capybara>, [">= 0"])
   end
 end
 

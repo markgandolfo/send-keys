@@ -9,6 +9,8 @@ begin
     s.authors = ["Mark Gandolfo"]
     s.files = FileList["[A-Z]*", "{lib}/**/*"]
     s.files.exclude('*.komodoproject')
+    
+    s.add_dependency 'capybara'
   end
 rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install jeweler"
