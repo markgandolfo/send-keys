@@ -48,9 +48,8 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
     def send(key)
       send_key = []
 
-      if key.match(/\[.*\]/i)
-        key.gsub!(/[\[\]]/,'')
-        key = key.split(',')
+      if matches = key.match(%r{^\[(.*)\]$})
+        key = matches[1].split(',').map(&:strip)
       else
         key = [key]
       end
