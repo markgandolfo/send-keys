@@ -42,7 +42,7 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
         decimal
         divide
         f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
-      )
+      ).index_by {|k|k}
     end
    
     def send(key)
@@ -58,7 +58,7 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
       key.each do |k| 
         if k.match(/(\'|\")/i)
           send_key << k.gsub(/(\"|\')/, '')
-        elsif allowed_keys.include?(k)
+        elsif allowed_keys.has_key?(k)
           send_key << k.to_sym
         else
           send_key << "#{k}"
