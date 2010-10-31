@@ -2,7 +2,47 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
   class Node < Capybara::Node
     
     def allowed_keys
-      @allowed_keys ||= %q(option, null cancel help backspace tab clear return enter shift left_shift control left_control alt left_alt pause escape space page_up page_down end home left arrow_left uparrow_up right arrow_rightdown arrow_down insert delete semicolon equals numpad0 numpad1 numpad2 numpad3 numpad4 numpad5 numpad6 numpad7 numpad8 numpad9 multiplyadd separator subtract decimal divide f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12)
+      @allowed_keys ||= %w(
+        option
+        null
+        cancel
+        help
+        backspace
+        tab
+        clear
+        return
+        enter
+        shift
+        left_shift
+        control
+        left_control
+        alt
+        left_alt
+        pause
+        escape
+        space
+        page_up
+        page_down
+        end
+        home
+        left
+        arrow_left
+        uparrow_up
+        right
+        arrow_rightdown
+        arrow_down
+        insert
+        delete
+        semicolon
+        equals
+        numpad0 numpad1 numpad2 numpad3 numpad4 numpad5 numpad6 numpad7 numpad8 numpad9
+        multiplyadd
+        separator
+        subtract
+        decimal
+        divide
+        f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+      )
     end
    
     def send(key)
