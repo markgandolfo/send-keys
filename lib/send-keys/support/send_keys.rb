@@ -55,12 +55,12 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
       end
 
       key.each do |k| 
-        if k.match(/(\'|\")/i)
-          send_key << k.gsub(/(\"|\')/, '')
+        if matches = k.match(%r{^['"](.*)['"]$})
+          send_key << matches[1]
         elsif allowed_keys.has_key?(k)
           send_key << k.to_sym
         else
-          send_key << "#{k}"
+          send_key << k.to_s
         end
       end
      
