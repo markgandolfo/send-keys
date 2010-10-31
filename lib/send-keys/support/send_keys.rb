@@ -45,7 +45,7 @@ class Capybara::Driver::Selenium < Capybara::Driver::Base
       ).index_by {|k|k}
     end
    
-    def send(key)
+    def send_string_of_keys(key)
       send_key = []
 
       if matches = key.match(%r{^\[(.*)\]$})
