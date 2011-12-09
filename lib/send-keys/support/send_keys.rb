@@ -62,8 +62,8 @@ module SendKeys
       end
     end
    
-    node.send_keys(send_key)
+    native.send_keys(send_key)
   end
 end
 
-Capybara::Node.send :include, SendKeys
+Capybara::Node::Base.send :include, SendKeys
