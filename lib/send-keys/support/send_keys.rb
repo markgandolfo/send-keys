@@ -25,9 +25,11 @@ module SendKeys
       home
       left
       arrow_left
-      uparrow_up
+      up
+      arrow_up
       right
-      arrow_rightdown
+      arrow_right
+      down
       arrow_down
       insert
       delete
